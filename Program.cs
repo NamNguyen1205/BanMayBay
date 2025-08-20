@@ -88,19 +88,13 @@
 
         for (int i = enemiesList.Count - level - 1; i >= 0; i--)
         {
-                enemiesList[i].Row++; // Move enemy down by one row
+            enemiesList[i].Row++; // Move enemy down by one row
         }
-        // foreach (Enemy enemy in enemiesList)
-        // {
-        //     if ( enemy.Row == 0 && enemiesList.Count > 0) continue; // Skip if enemy is already at the top row
-        //     enemy.Row++; // Move enemy down by one row
-        // }
 
         foreach (Enemy enemy in enemiesList)
-            {
-                map[enemy.Row, enemy.Col] = "  ☠ "; // Update enemy position on the map
-            }
-        
+        {
+            map[enemy.Row, enemy.Col] = "  ☠ "; // Update enemy position on the map
+        }
     }
     
     public static void FireBullet()
@@ -148,7 +142,7 @@
 
     public static void StartGame()
     {
-        Console.WriteLine("Welcome to the Tranh bom roi!");
+        Console.WriteLine("Welcome to Game Ban may bay!");
         // Initialize the map with empty spaces
         for (int i = 0; i < map.GetLength(0); i++)
         {
@@ -162,8 +156,8 @@
 
         Console.WriteLine("Chào mừng bạn đến với trò chơi Bắn Máy Bay!");
         RenderMap();
-        Console.WriteLine("Sử dụng các phím 'mũi tên trái' và 'phải' để di chuyển xe của bạn.");
-        Console.WriteLine("Nhấn phím 'Enter' nếu không muốn di chuyển.");
+        Console.WriteLine("Sử dụng các phím 'mũi tên trái' và 'phải' để di chuyển máy bay của bạn.");
+        Console.WriteLine("Nhấn phím 'Enter' để bắn.");
         Console.WriteLine("Nhấn phím 'Enter' để bắt đầu");
     }
 
