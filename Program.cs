@@ -1,6 +1,6 @@
 ﻿public class Program
 {
-    public static string[,] map = new string[10, 8];
+    public static string[,] map = new string[12, 8];
     static ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
     //static int playerPos = 4; // Player's initial X position
     static List<Enemy> enemiesList = new List<Enemy>();
@@ -84,7 +84,7 @@
     public static void GameUpdate()
     {
         EnemySpawnPos(); // Spawn enemy at random position
-        map[9, player.playerPos] = " <^>"; // Update player's position on the map
+        map[map.GetLength(0)-1, player.playerPos] = " <^>"; // Update player's position on the map
 
         for (int i = enemiesList.Count - level - 1; i >= 0; i--)
         {
@@ -99,7 +99,6 @@
     
     public static void FireBullet()
     {
-        int enemies = enemiesList.Count; // Get the number of enemies
         for (int i = map.GetLength(0) - 2; i >= 0; i--)
         {
             foreach (Enemy enemy in enemiesList)
@@ -152,7 +151,7 @@
             }
         }
 
-        map[9, player.playerPos] = " <^>";// Player's plane spawn position
+        map[map.GetLength(0)-1, player.playerPos] = " <^>";// Player's plane spawn position
 
         Console.WriteLine("Chào mừng bạn đến với trò chơi Bắn Máy Bay!");
         RenderMap();
