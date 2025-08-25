@@ -1,6 +1,6 @@
 ﻿public class Program
 {
-    public static string[,] map = new string[10, 6];
+    public static string[,] map = new string[10, 8];
     static ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
     //static int playerPos = 4; // Player's initial X position
     static List<Enemy> enemiesList = new List<Enemy>();
@@ -164,25 +164,24 @@
     public static void EnemySpawnPos()
     {
         List<int> Coll = new List<int>();
-        for (int i = 0; i < map.GetLength(1) ; i++)
+        for (int i = 0; i < map.GetLength(1); i++)
         {
+            Console.Write(i + " ");
             Coll.Add(i); // Initialize empty columns list
         }
-        List<int> EmptyCol = Coll.Where(c => map[0, c] == "    ").ToList(); // Filter empty columns
-    
+
         Random col = new Random();
         for (int i = 0; i < level; i++)
         {
-            if (EmptyCol.Count == 0) break; // Exit if no empty columns left
+            if (Coll.Count == 0) break; // Exit if no empty columns left
 
-            int index = col.Next(EmptyCol.Count); // Random column for enemy spawn
-            int posCol = EmptyCol[index]; // Get the column index
-            EmptyCol.RemoveAt(index); // Remove the column from the list to avoid duplicates
+            int index = col.Next(Coll.Count); // Random column for enemy spawn
+            int posCol = Coll[index]; // Get the column index
+            Coll.RemoveAt(index); // Remove the column from the list to avoid duplicates
 
             map[0, posCol] = "  ☠ "; // Place enemy on the map
             enemiesList.Add(new Enemy(0, posCol)); // Add the enemy to the list
         }
-        
     }
 
     public static void RenderMap()
